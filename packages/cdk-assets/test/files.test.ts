@@ -35,18 +35,25 @@ afterEach(() => {
 });
 
 test('pass destination properties to AWS client', async () => {
-  const pub = new AssetPublishing({ aws, manifest: AssetManifest.fromPath('/simple/cdk.out'), throwOnError: true });
+  const pub = new AssetPublishing({ aws, manifest: AssetManifest.fromPath('/simple/cdk.out'), throwOnError: false });
 
   await pub.publish();
 
-  expect(aws.s3Client).toHaveBeenCalledWith({
+  expect(aws.s3Client).toHaveBeenCalledWith(expect.objectContaining({
     region: 'us-north-50',
     assumeRoleArn: 'arn:aws:role',
-  });
+  }));
 });
 
 test('Do nothing if file already exists', () => {
-  // ...
+  const pub = new AssetPublishing({ aws, manifest: AssetManifest.fromPath('/simple/cdk.out') });
+
+  await pub.publish();
+
+  expect(aws.s3Client).toHaveBeenCalledWith(expect.objectContaining({
+    region: 'us-north-50',
+    assumeRoleArn: 'arn:aws:role',
+  }));
 });
 
 test('upload file if new', () => {

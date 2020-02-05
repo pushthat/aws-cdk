@@ -92,7 +92,11 @@
   "awslint": {
     "exclude": [
       "docs-public-apis:@aws-cdk/aws-s3-assets.AssetOptions",
-      "docs-public-apis:@aws-cdk/aws-s3-assets.AssetProps"
+      "docs-public-apis:@aws-cdk/aws-s3-assets.AssetProps",
+      "no-unused-type:@aws-cdk/aws-s3-assets.FileAssetPackaging",
+      "no-unused-type:@aws-cdk/aws-s3-assets.FileDestination",
+      "no-unused-type:@aws-cdk/aws-s3-assets.FileSource",
+      "no-unused-type:@aws-cdk/aws-s3-assets.ManifestFileEntry"
     ]
   }
 }

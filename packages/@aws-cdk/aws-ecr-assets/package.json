@@ -99,7 +99,10 @@
   "stability": "experimental",
   "awslint": {
     "exclude": [
-      "docs-public-apis:@aws-cdk/aws-ecr-assets.DockerImageAssetProps"
+      "docs-public-apis:@aws-cdk/aws-ecr-assets.DockerImageAssetProps",
+      "no-unused-type:@aws-cdk/aws-ecr-assets.DockerImageDestination",
+      "no-unused-type:@aws-cdk/aws-ecr-assets.DockerImageSource",
+      "no-unused-type:@aws-cdk/aws-ecr-assets.ManifestDockerImageEntry"
     ]
   }
 }

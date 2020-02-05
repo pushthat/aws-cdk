@@ -110,6 +110,7 @@ class DefaultAwsClient implements IAws {
     }
 
     // We need to set the environment before we load this library for the first time.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     this.AWS = require('aws-sdk');
   }
 

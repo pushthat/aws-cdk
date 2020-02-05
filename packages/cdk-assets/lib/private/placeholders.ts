@@ -17,6 +17,7 @@ export async function replaceAwsPlaceholders<A extends { region: string }>(objec
 
       value = replaceAll(value, AssetManifest.CURRENT_REGION_PLACEHOLDER, region ?? '*');
       value = replaceAll(value, AssetManifest.CURRENT_ACCOUNT_PLACEHOLDER, account ?? '*');
+
       return value;
     }
 
@@ -25,7 +26,7 @@ export async function replaceAwsPlaceholders<A extends { region: string }>(objec
 
     const ret: Record<string, any> = {};
     for (const [key, inner] of Object.entries(value)) {
-      ret[key] = recurse(inner);
+      ret[key] = await recurse(inner);
     }
     return ret;
   }

@@ -52,7 +52,13 @@ export class AssetManifest {
     return AssetManifest.fromFile(filePath);
   }
 
-  private constructor(public readonly directory: string, private readonly _assets: Record<string, schema.GenericAsset>) {
+  /**
+   * The directory where the manifest was found
+   */
+  public readonly directory: string;
+
+  private constructor(directory: string, private readonly _assets: Record<string, schema.GenericAsset>) {
+    this.directory = directory;
   }
 
   /**
